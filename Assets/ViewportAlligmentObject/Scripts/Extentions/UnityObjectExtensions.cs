@@ -135,5 +135,18 @@ namespace ViewportAlligmentObject
             }
             return result;
         }
+
+#if !UNITY_2019_1_OR_NEWER
+        public static bool TryGetComponent<T>(this GameObject gameObject, out T result) where T : Component
+        {
+            result = gameObject.GetComponent<T>();
+            return result;
+        }
+
+        public static bool TryGetComponent<T>(this Component component, out T result) where T : Component
+        {
+            return component.gameObject.TryGetComponent(out result);
+        }
+#endif
     }
 }
