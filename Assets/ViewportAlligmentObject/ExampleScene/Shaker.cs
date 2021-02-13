@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
-namespace Example
+
+namespace ViewportAlligmentObject.Example
 {
     public class Shaker : MonoBehaviour
     {
