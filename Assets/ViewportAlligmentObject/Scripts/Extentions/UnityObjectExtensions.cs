@@ -38,7 +38,7 @@ namespace ViewportAlligmentObject
         /// <returns></returns>
         public static T GetComponentOrCreate<T>(this GameObject gameObject) where T : Component
         {
-            return gameObject.GetComponent<T>() ?? gameObject.AddComponent<T>();
+            return gameObject.GetComponentOrCreate<T, T>();
         }
 
         /// <summary>
@@ -102,7 +102,11 @@ namespace ViewportAlligmentObject
         /// <returns></returns>
         public static T GetComponentOrCreate<T, TElse>(this GameObject gameObject) where TElse : Component, T
         {
-            return gameObject.GetComponent<T>() ?? gameObject.AddComponent<TElse>();
+            if(!gameObject.TryGetComponent<T>(out var result))
+            {
+                result = gameObject.AddComponent<TElse>();
+            }
+            return result;
         }
 
         /// <summary>

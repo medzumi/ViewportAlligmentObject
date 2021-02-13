@@ -38,7 +38,7 @@ namespace ViewportAlligmentObject
         protected override void MakeAlligment()
         {
             transform.SetParent(scrollRect.viewport);
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, scrollRect.viewport.position.y + scrollRect.viewport.rect.yMin + dummyRectTransform.rect.height / 2f, scrollRect.viewport.position.y + scrollRect.viewport.rect.yMax - dummyRectTransform.rect.height / 2f));
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(dummyRectTransform.position.y, scrollRect.viewport.position.y + scrollRect.viewport.rect.yMin + dummyRectTransform.rect.height / 2f, scrollRect.viewport.position.y + scrollRect.viewport.rect.yMax - dummyRectTransform.rect.height / 2f));
         }
     }
 
